@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,6 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'TaskController@index');
+
+Route::post('/task', 'TaskController@store');
+
+Route::delete('/task/{id}', 'TaskController@destore');
+
+
+Auth::routes();
+
+Route::get('/task', 'HomeController@index')->name('home');
